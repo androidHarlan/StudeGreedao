@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 result.setText(gon.toJson(UserHelp.queryAll()));
                 break;
             case R.id.deleteuser:
+                UserHelp.delete(1);
                 break;
             case R.id.updatauser:
                 break;
