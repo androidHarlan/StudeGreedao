@@ -2,6 +2,7 @@ package com.harlan.lhc.studegreedao;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,15 +49,19 @@ public class MainActivity extends AppCompatActivity {
     Button studentupdata;
     @Bind(R.id.result)
     TextView result;
-    Gson gon=new Gson();
+    Gson gon = new Gson();
+    @Bind(R.id.updatadb)
+    Button updatadb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Log.e("backinfo", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
-    @OnClick({R.id.insertuser, R.id.selectuser, R.id.deleteuser, R.id.updatauser, R.id.studentinsert, R.id.studentselect, R.id.studentdelete, R.id.studentupdata})
+    @OnClick({R.id.updatadb,R.id.insertuser, R.id.selectuser, R.id.deleteuser, R.id.updatauser, R.id.studentinsert, R.id.studentselect, R.id.studentdelete, R.id.studentupdata})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.insertuser:
@@ -74,13 +79,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.deleteuser:
                 UserHelp.delete(1);
                 break;
+
             case R.id.updatauser:
+                break;
+            case R.id.updatadb:
+
                 break;
             case R.id.studentinsert:
                 if (studentname.getText().toString().equals("") || studentname.getText().toString().equals(null)) {
                     Toast.makeText(MainActivity.this, "请输入用户名", Toast.LENGTH_LONG).show();
                 } else {
-                    Student student=new Student();
+                    Student student = new Student();
                     student.setName(studentname.getText().toString());
                     student.setAddress(studentaddress.getText().toString());
                     student.setSex(studentsex.getText().toString());

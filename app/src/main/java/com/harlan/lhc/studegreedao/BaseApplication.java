@@ -1,36 +1,25 @@
 package com.harlan.lhc.studegreedao;
 
 import android.app.Application;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Context;
 
-import com.harlan.lhc.studegreedao.gen.DaoMaster;
-import com.harlan.lhc.studegreedao.gen.DaoSession;
+import com.harlan.lhc.studegreedao.help.DaoManager;
 
 /**
  * Created by a1 on 2017/11/8.
  */
 public class BaseApplication extends Application {
 
-    private static DaoSession daoSession;
-
+    private static Context context;
     @Override
     public void onCreate() {
         super.onCreate();
-        //配置数据库
-        setupDatabase();
+        context = this;
+        DaoManager.getInstance().init(this);
+    }
+    public static Context getContext()
+    {
+        return context;
     }
 
-    /**
-     * 配置数据库
-     */
-    private void setupDatabase() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "harlan.db", null);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        DaoMaster daoMaster = new DaoMaster(db);
-        daoSession = daoMaster.newSession();
-    }
-
-    public static DaoSession getDaoInstant() {
-        return daoSession;
-    }
 }

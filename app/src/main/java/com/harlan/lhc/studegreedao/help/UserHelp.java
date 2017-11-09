@@ -1,6 +1,5 @@
 package com.harlan.lhc.studegreedao.help;
 
-import com.harlan.lhc.studegreedao.BaseApplication;
 import com.harlan.lhc.studegreedao.bean.User;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class UserHelp {
      * @param
      */
     public static void insert(User user) {
-        BaseApplication.getDaoInstant().getUserDao().insert(user);
+        DaoManager.getInstance().getDaoSession().getUserDao().insert(user);
     }
     /**
      * 添加数据
@@ -24,7 +23,7 @@ public class UserHelp {
      * @param
      */
     public static void insertList(List<User> users) {
-        BaseApplication.getDaoInstant().getUserDao().insertInTx(users);
+        DaoManager.getInstance().getDaoSession().getUserDao().insertInTx(users);
     }
     /**
      * 删除数据
@@ -32,7 +31,7 @@ public class UserHelp {
      * @param id
      */
     public static void delete(long id) {
-        BaseApplication.getDaoInstant().getUserDao().deleteByKey(id);
+        DaoManager.getInstance().getDaoSession().getUserDao().deleteByKey(id);
     }
 
     /**
@@ -41,7 +40,7 @@ public class UserHelp {
      * @param shop
      */
     public static void update(User shop) {
-        BaseApplication.getDaoInstant().getUserDao().update(shop);
+        DaoManager.getInstance().getDaoSession().getUserDao().update(shop);
     }
 
     /**
@@ -50,6 +49,6 @@ public class UserHelp {
      * @return
      */
     public static List<User> queryAll() {
-        return BaseApplication.getDaoInstant().getUserDao().queryBuilder().list();
+        return DaoManager.getInstance().getDaoSession().getUserDao().queryBuilder().list();
     }
 }

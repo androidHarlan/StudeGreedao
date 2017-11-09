@@ -1,6 +1,5 @@
 package com.harlan.lhc.studegreedao.help;
 
-import com.harlan.lhc.studegreedao.BaseApplication;
 import com.harlan.lhc.studegreedao.bean.Student;
 import com.harlan.lhc.studegreedao.gen.StudentDao;
 
@@ -16,7 +15,7 @@ public class StudentHelp {
      * @param
      */
     public static void insert(Student student) {
-        BaseApplication.getDaoInstant().getStudentDao().insert(student);
+        DaoManager.getInstance().getDaoSession().getStudentDao().insert(student);
     }
     /**
      * 添加数据
@@ -24,7 +23,7 @@ public class StudentHelp {
      * @param
      */
     public static void insertList(List<Student> students) {
-        BaseApplication.getDaoInstant().getStudentDao().insertInTx(students);
+        DaoManager.getInstance().getDaoSession().getStudentDao().insertInTx(students);
     }
     /**
      * 删除数据
@@ -32,7 +31,7 @@ public class StudentHelp {
      * @param id
      */
     public static void delete(long id) {
-        BaseApplication.getDaoInstant().getStudentDao().deleteByKey(id);
+        DaoManager.getInstance().getDaoSession().getStudentDao().deleteByKey(id);
     }
 
     /**
@@ -41,7 +40,7 @@ public class StudentHelp {
      * @param
      */
     public static void update(Student student) {
-        BaseApplication.getDaoInstant().getStudentDao().update(student);
+        DaoManager.getInstance().getDaoSession().getStudentDao().update(student);
     }
 
     /**
@@ -50,7 +49,7 @@ public class StudentHelp {
      * @return
      */
     public static List<Student> queryAll() {
-        return BaseApplication.getDaoInstant().getStudentDao().queryBuilder().list();
+        return DaoManager.getInstance().getDaoSession().getStudentDao().queryBuilder().list();
     }
     /**
      * 查询条件为Type=TYPE_LOVE的数据
@@ -64,6 +63,6 @@ public class StudentHelp {
      * @return
      */
     public static List<Student> queryAll(String name) {
-        return BaseApplication.getDaoInstant().getStudentDao().queryBuilder().where(StudentDao.Properties.Name.eq(name)).list();
+        return DaoManager.getInstance().getDaoSession().getStudentDao().queryBuilder().where(StudentDao.Properties.Name.eq(name)).list();
     }
 }
