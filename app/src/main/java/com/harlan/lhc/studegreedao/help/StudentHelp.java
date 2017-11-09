@@ -65,4 +65,13 @@ public class StudentHelp {
     public static List<Student> queryAll(String name) {
         return DaoManager.getInstance().getDaoSession().getStudentDao().queryBuilder().where(StudentDao.Properties.Name.eq(name)).list();
     }
+
+    /**
+     * @param offset
+     * @return
+     * 分页加载20条数据，getTwentyRec(int offset)中控制页数offset++即可
+     */
+    public static List<Student> getTwentyRec(int offset) {
+        return DaoManager.getInstance().getDaoSession().getStudentDao().queryBuilder().offset(offset*20).limit(20).list();
+    }
 }
