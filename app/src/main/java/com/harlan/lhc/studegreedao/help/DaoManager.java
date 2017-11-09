@@ -2,7 +2,7 @@ package com.harlan.lhc.studegreedao.help;
 
 import android.content.Context;
 
-import com.harlan.lhc.studegreedao.dbupdate.MySqlLiteOpenHelper;
+import com.harlan.lhc.studegreedao.BaseApplication;
 import com.harlan.lhc.studegreedao.gen.DaoMaster;
 import com.harlan.lhc.studegreedao.gen.DaoSession;
 
@@ -24,7 +24,7 @@ public class DaoManager
     //它里边实际上是保存数据库的对象
     private static DaoMaster mDaoMaster,localDaoMaster;
     //创建数据库的工具
-    private static MySqlLiteOpenHelper mHelper;
+   // private static MySqlLiteOpenHelper mHelper;
     //管理gen里生成的所有的Dao对象里边带有基本的增删改查的方法
     private static DaoSession mDaoSession,localDaoSession;
     /**
@@ -65,8 +65,9 @@ public class DaoManager
             {
                 if(mDaoMaster == null)
                 {
-                    mHelper = new MySqlLiteOpenHelper(context,DB_NAME,null);
-                    mDaoMaster = new DaoMaster(mHelper.getWritableDatabase());
+                  //  mHelper = new MySqlLiteOpenHelper(context,DB_NAME,null);
+                   // mDaoMaster = new DaoMaster(mHelper.getWritableDatabase());
+                    mDaoMaster = new DaoMaster(BaseApplication.getInstances().getDb());
                 }
             }
 
@@ -106,11 +107,7 @@ public class DaoManager
 
     public void closeHelper()
     {
-        if(mHelper != null)
-        {
-            mHelper.close();
-            mHelper = null;
-        }
+        BaseApplication.getInstances().closeHelper();
     }
 
     public void closeDaoSession()

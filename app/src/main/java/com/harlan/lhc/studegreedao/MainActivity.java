@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     User user = new User();
                     user.setName(username.getText().toString());
+                    user.setAge("bbbb");
                     UserHelp.insert(user);
                 }
                 break;
