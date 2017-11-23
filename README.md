@@ -29,32 +29,35 @@ GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成�
 =
 ###
 ~~~~
-compile'org.greenrobot:greendao:3.0.1'<br>
-compile'org.greenrobot:greendao-generator:3.0.0'<br>
+compile'org.greenrobot:greendao:3.0.1'
+compile'org.greenrobot:greendao-generator:3.0.0'
 ~~~~
 二，在build.gradle中进行配置：<br>
 =
 ###
 ~~~~
-apply plugin: 'org.greenrobot.greendao'<br>
-buildscript { <br>
-    repositories { <br>
-        mavenCentral()  <br>  
-}    <br>
-dependencies {<br>
-    classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'    <br>
-    }<br>
-}<br>
+apply plugin: 'org.greenrobot.greendao'
+buildscript { 
+    repositories {
+        mavenCentral()  
+}    
+dependencies {
+    classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0' 
+    }
+}
 ~~~~
 在gradle的根模块中加入上述代码。<br>
 
 三，自定义路径<br>
 =
+###
+~~~~
 greendao {<br>
     >>>schemaVersion 1<br>
     >>>daoPackage 'com.anye.greendao.gen'<br>
     >>>targetGenDir 'src/main/java'<br>
 }<br>
+~~~~
 在gradle的根模块中加入上述代码，就完成了我们的基本配置了。<br>
 属性介绍：<br>
  schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;<br>
