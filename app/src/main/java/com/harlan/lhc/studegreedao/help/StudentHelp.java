@@ -17,6 +17,9 @@ public class StudentHelp {
     public static void insert(Student student) {
         DaoManager.getInstance().getDaoSession().getStudentDao().insert(student);
     }
+    public static StudentDao studentDao() {
+        return DaoManager.getInstance().getDaoSession().getStudentDao();
+    }
     /**
      * 添加数据
      *

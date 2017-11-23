@@ -181,8 +181,18 @@
                         android:text="更新" />
                 </LinearLayout>
             </LinearLayout>
-
-
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="多对多：举例，TeacherBean和StudentBean，每个teacher可能对应多个student，每个student也可能对应多个teacher，就如同大学的选修课
+多对多的实现关键是一个关系绑定类（TeacherJoinStudentBean.java），这个类中只有变量teacherId和studentId，用来记录绑定的关系
+查看以下代码和注释，可以清楚的了解多对多如何使用（自动注入代码可以适当忽略）
+以下代码主要包括实体类定义（TeacherBean.java、StudentBean.java），绑定类定义（TeacherJoinStudentBean.java），insert一组数据3个部分"/>
+         <Button
+             android:id="@+id/manytomany"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="添加多对多数据"/>
         </LinearLayout>
 
         <Button

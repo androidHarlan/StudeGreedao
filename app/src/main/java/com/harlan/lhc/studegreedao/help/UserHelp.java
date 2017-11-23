@@ -1,6 +1,7 @@
 package com.harlan.lhc.studegreedao.help;
 
 import com.harlan.lhc.studegreedao.OneToOne.User;
+import com.harlan.lhc.studegreedao.gen.UserDao;
 
 import java.util.List;
 
@@ -33,7 +34,9 @@ public class UserHelp {
     public static void delete(long id) {
         DaoManager.getInstance().getDaoSession().getUserDao().deleteByKey(id);
     }
-
+    public static UserDao userDao() {
+        return DaoManager.getInstance().getDaoSession().getUserDao();
+    }
     /**
      * 更新数据
      *

@@ -2,6 +2,8 @@ package com.harlan.lhc.studegreedao.help;
 
 import com.harlan.lhc.studegreedao.OneToMany.Customer;
 import com.harlan.lhc.studegreedao.OneToMany.Order;
+import com.harlan.lhc.studegreedao.gen.CustomerDao;
+import com.harlan.lhc.studegreedao.gen.OrderDao;
 import com.harlan.lhc.studegreedao.gen.StudentDao;
 
 import java.util.List;
@@ -53,7 +55,12 @@ public class CustomerHelp {
     public static void update(Customer customer) {
         DaoManager.getInstance().getDaoSession().getCustomerDao().update(customer);
     }
-
+    public static CustomerDao customerDao() {
+        return DaoManager.getInstance().getDaoSession().getCustomerDao();
+    }
+    public static OrderDao orderDao() {
+        return DaoManager.getInstance().getDaoSession().getOrderDao();
+    }
     /**
      * 查询条件为Type=TYPE_LOVE的数据
      *
