@@ -19,7 +19,7 @@ android {
     }
 }
 greendao {
-    schemaVersion 3
+    schemaVersion 4
     daoPackage 'com.harlan.lhc.studegreedao.gen'
     targetGenDir 'src/main/java'
 }

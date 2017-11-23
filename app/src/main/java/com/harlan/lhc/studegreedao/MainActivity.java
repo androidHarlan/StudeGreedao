@@ -10,10 +10,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.harlan.lhc.studegreedao.bean.Student;
-import com.harlan.lhc.studegreedao.bean.User;
+import com.harlan.lhc.studegreedao.OneToMany.Customer;
+import com.harlan.lhc.studegreedao.OneToMany.Order;
+import com.harlan.lhc.studegreedao.OneToOne.Student;
+import com.harlan.lhc.studegreedao.OneToOne.User;
+import com.harlan.lhc.studegreedao.help.CustomerHelp;
 import com.harlan.lhc.studegreedao.help.StudentHelp;
 import com.harlan.lhc.studegreedao.help.UserHelp;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,16 +57,29 @@ public class MainActivity extends AppCompatActivity {
     Gson gon = new Gson();
     @Bind(R.id.updatadb)
     Button updatadb;
+    @Bind(R.id.customername)
+    EditText customername;
+    @Bind(R.id.ordername)
+    EditText ordername;
+    @Bind(R.id.insertorder)
+    Button insertorder;
+    @Bind(R.id.selectorder)
+    Button selectorder;
+    @Bind(R.id.deleteorder)
+    Button deleteorder;
+    @Bind(R.id.updataorder)
+    Button updataorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        CustomerHelp.deleteall();
         Log.e("backinfo", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
-    @OnClick({R.id.updatadb,R.id.insertuser, R.id.selectuser, R.id.deleteuser, R.id.updatauser, R.id.studentinsert, R.id.studentselect, R.id.studentdelete, R.id.studentupdata})
+    @OnClick({R.id.updatadb, R.id.insertuser, R.id.selectuser, R.id.deleteuser, R.id.updatauser, R.id.studentinsert, R.id.studentselect, R.id.studentdelete, R.id.studentupdata})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.insertuser:
@@ -71,6 +89,12 @@ public class MainActivity extends AppCompatActivity {
                     User user = new User();
                     user.setName(username.getText().toString());
                     user.setAge("bbbb");
+                    Student student = new Student();
+                    student.setName(studentname.getText().toString());
+                    student.setAddress(studentaddress.getText().toString());
+                    student.setSex(studentsex.getText().toString());
+                    student.setAge(studentage.getText().toString());
+                    user.setStudent(student);
                     UserHelp.insert(user);
                 }
                 break;
@@ -104,6 +128,43 @@ public class MainActivity extends AppCompatActivity {
             case R.id.studentdelete:
                 break;
             case R.id.studentupdata:
+                break;
+        }
+    }
+
+    @OnClick({R.id.insertorder, R.id.selectorder, R.id.deleteorder, R.id.updataorder})
+    public void oncustomerClicked(View view) {
+        switch (view.getId()) {
+            case R.id.insertorder:
+                if(customername.getText().toString().trim().length()>0&&ordername.getText().toString().trim().length()>0){
+                    for(int i=0;i<2;i++){
+                        Customer customer=new Customer();
+
+                        customer.setName(customername.getText().toString().trim()+i);
+                        CustomerHelp.insert(customer);
+
+                    }
+                    List<Customer> customers= CustomerHelp.queryAll();
+
+                    for(int j=0;j<customers.size();j++){
+                        Log.e("backinfo", "顾客id:" + customers.get(j).getId());
+                        Order order=new Order();
+                        order.setCustomerId(customers.get(j).getId());
+                        order.setName(ordername.getText().toString().trim());
+                        CustomerHelp.insert(order);
+                    }
+
+                }else{
+                    Toast.makeText(MainActivity.this, "请输入顾客名或订单名称", Toast.LENGTH_LONG).show();
+                }
+
+                break;
+            case R.id.selectorder:
+                result.setText(gon.toJson(CustomerHelp.queryOrderAll()));
+                break;
+            case R.id.deleteorder:
+                break;
+            case R.id.updataorder:
                 break;
         }
     }

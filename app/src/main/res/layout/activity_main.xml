@@ -12,103 +12,189 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="用户信息：" />
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入用户姓名" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/insertuser"
-                android:text="插入"
+            android:orientation="vertical">
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/selectuser"
-                android:text="查询"
+                android:layout_height="wrap_content"
+                android:text="单对单数据库：使用介绍http://www.jianshu.com/p/d61983df2341" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入用户姓名" />
+
+
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/deleteuser"
-                android:text="删除"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/updatauser"
-                android:text="更新"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="学生信息" />
+
+            <EditText
+                android:id="@+id/studentname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入姓名" />
+
+            <EditText
+                android:id="@+id/studentsex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入性别" />
+
+            <EditText
+                android:id="@+id/studentaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入地址" />
+
+            <EditText
+                android:id="@+id/studentage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入年龄" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:textSize="14sp"
+                    android:id="@+id/insertuser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="插入" />
+
+                <Button
+                    android:textSize="14sp"
+                    android:id="@+id/selectuser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查询" />
+
+                <Button
+                    android:textSize="14sp"
+                    android:id="@+id/deleteuser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="删除" />
+
+                <Button
+                    android:textSize="14sp"
+                    android:id="@+id/updatauser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="更新" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/studentinsert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="插入单个学生" />
+
+                <Button
+                    android:textSize="14sp"
+                    android:id="@+id/studentselect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查询所有学生" />
+
+                <Button
+                    android:textSize="14sp"
+                    android:id="@+id/studentdelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="删除" />
+
+                <Button
+                    android:textSize="14sp"
+                    android:id="@+id/studentupdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="更新" />
+            </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="学生信息" />
-
-        <EditText
-            android:id="@+id/studentname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入姓名" />
-
-        <EditText
-            android:id="@+id/studentsex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入性别" />
-
-        <EditText
-            android:id="@+id/studentaddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入地址" />
-
-        <EditText
-            android:id="@+id/studentage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="请输入年龄" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/studentinsert"
-                android:text="插入"
+            android:orientation="vertical">
+            <TextView
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一对多：在1对1关联中每个顾客只能与一个订单对应，但是现实生活中肯定不只是这样，也会出现一个顾客下多个订单的情况。如果出现这种需求的话，按照原生Sqlite的思路一样是通过外键关联即可，只是这一次查询的对象会有很多个，但是使用greenDao的1：1关联方式显然不行。不过别担心greenDao还给我们准备了@ToMany注释。"/>
+            <EditText
+                android:id="@+id/customername"
+                android:layout_width="match_parent"
+                android:hint="请输入顾客的姓名"
                 android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/studentselect"
-                android:text="查询"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/ordername"
+                android:layout_width="match_parent"
+                android:hint="请输入订单的名称"
                 android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/studentdelete"
-                android:text="删除"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/studentupdata"
-                android:text="更新"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:textSize="14sp"
+                        android:id="@+id/insertorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="插入" />
+
+                    <Button
+                        android:textSize="14sp"
+                        android:id="@+id/selectorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查询" />
+
+                    <Button
+                        android:textSize="14sp"
+                        android:id="@+id/deleteorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="删除" />
+
+                    <Button
+                        android:textSize="14sp"
+                        android:id="@+id/updataorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更新" />
+                </LinearLayout>
+            </LinearLayout>
+
+
         </LinearLayout>
+
         <Button
+            android:textSize="14sp"
             android:id="@+id/updatadb"
-            android:text="更新数据库"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更新数据库" />
+
+        <TextView
+            android:id="@+id/result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/result"/>
     </LinearLayout>
 </ScrollView>

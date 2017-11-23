@@ -1,6 +1,6 @@
 package com.harlan.lhc.studegreedao.help;
 
-import com.harlan.lhc.studegreedao.bean.Student;
+import com.harlan.lhc.studegreedao.OneToOne.Student;
 import com.harlan.lhc.studegreedao.gen.StudentDao;
 
 import java.util.List;

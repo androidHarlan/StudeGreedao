@@ -1,6 +1,6 @@
 package com.harlan.lhc.studegreedao.help;
 
-import com.harlan.lhc.studegreedao.bean.User;
+import com.harlan.lhc.studegreedao.OneToOne.User;
 
 import java.util.List;
 

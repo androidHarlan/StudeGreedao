@@ -1,4 +1,4 @@
-package com.harlan.lhc.studegreedao.bean;
+package com.harlan.lhc.studegreedao.OneToOne;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
