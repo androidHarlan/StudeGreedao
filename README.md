@@ -44,15 +44,15 @@ dependencies {<br>
 三，自定义路径<br>
 
 greendao {<br>
-    schemaVersion 1<br>
-    daoPackage 'com.anye.greendao.gen'<br>
-    targetGenDir 'src/main/java'<br>
+    >>>schemaVersion 1<br>
+    >>>daoPackage 'com.anye.greendao.gen'<br>
+    >>>targetGenDir 'src/main/java'<br>
 }<br>
 在gradle的根模块中加入上述代码，就完成了我们的基本配置了。<br>
 属性介绍：<br>
-schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;<br>
-daoPackage --> dao的包名，包名默认是entity所在的包；<br>
-targetGenDir --> 生成数据库文件的目录;<br>
+ >>>schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;<br>
+ >>>daoPackage --> dao的包名，包名默认是entity所在的包；<br>
+ >>>targetGenDir --> 生成数据库文件的目录;<br>
 
 四，创建一个User的实体类<br>
 
@@ -66,7 +66,7 @@ public class User {<br>
 }
 五，MakeProject<br>
 
-编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；<br>
+ >>>编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；<br>
 
 
 greenDao<br>
