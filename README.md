@@ -12,10 +12,10 @@ http://www.jianshu.com/p/d61983df2341
 greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解决方案。<br>
 关于greenDAO的概念可以看官网greenDAO<br>
 
-====greenDAO 优势<br>
-
+greenDAO 优势<br>
+=
 1、一个精简的库<br>
-###
+#
 2、性能最大化<br>
 3、内存开销最小化<br>
 4、易于使用的 APIs<br>
@@ -26,11 +26,11 @@ GreenDao 3.0使用<br>
 GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成相应的代码。<br>
 
 一，在as中导入相关的包<br>
-
+=
 compile'org.greenrobot:greendao:3.0.1'<br>
 compile'org.greenrobot:greendao-generator:3.0.0'<br>
 二，在build.gradle中进行配置：<br>
-
+=
 apply plugin: 'org.greenrobot.greendao'<br>
 buildscript { <br>
     repositories { <br>
@@ -43,7 +43,7 @@ dependencies {<br>
 在gradle的根模块中加入上述代码。<br>
 
 三，自定义路径<br>
-
+=
 greendao {<br>
     >>>schemaVersion 1<br>
     >>>daoPackage 'com.anye.greendao.gen'<br>
@@ -56,7 +56,7 @@ greendao {<br>
  targetGenDir --> 生成数据库文件的目录;<br>
 
 四，创建一个User的实体类<br>
-
+=
 @Entity<br>
 public class User {<br>
     @Id <br>
@@ -66,12 +66,13 @@ public class User {<br>
     private int tempUsageCount; // not persisted  <br>
 }
 五，MakeProject<br>
-
+=
  >>>编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；<br>
 
 
 greenDao<br>
 GreenDao使用<br>
+=
 ~~~~
 
  public class MyApplication extends Application {
@@ -137,7 +138,7 @@ mContext.setText("查询全部数据==>"+userName);
 更多的操作就不一一介绍了，大家可以根据需要去查找资料；
 ~~~~
 greendao中的注解<br>
-
+=
 (一) @Entity 定义实体<br>
 @nameInDb 在数据库中的名字，如不写则为实体中类名<br>
 @indexes 索引<br>
