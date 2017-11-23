@@ -78,7 +78,7 @@ public class User {<br>
     private int tempUsageCount; // not persisted  <br>
 }
 ~~~~
-五，MakeProject<br>
+五，在studio 里的Build   Make  Project<br>
 =
  编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；<br>
 ![](http://upload-images.jianshu.io/upload_images/1429046-0a2aac0bed796a94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
