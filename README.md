@@ -4,7 +4,7 @@
 ~~~
 http://www.jianshu.com/p/4986100eff90
 ~~~
-关于GreenDao
+
 ~~~
 关于多表联系http://www.jianshu.com/p/dbec25bd575f
 http://www.jianshu.com/p/d61983df2341
@@ -67,7 +67,7 @@ public class User {<br>
 }
 五，MakeProject<br>
 =
- >>>编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；<br>
+ 编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；<br>
 
 
 greenDao<br>
@@ -115,20 +115,27 @@ public SQLiteDatabase getDb() {
 
   mUserDao = MyApplication.getInstances().getDaoSession().getUserDao();
 简单的增删改查实现：
-
+~~~~
 1. 增
-
+===
+~~~~
 mUser = new User((long)2,"anye3");
 mUserDao.insert(mUser);//添加一个
+~~~~
 2. 删
-
+===
+~~~~
 mUserDao.deleteByKey(id);
+~~~~
 3. 改
-
+===
+~~~~
 mUser = new User((long)2,"anye0803");
 mUserDao.update(mUser);
+~~~~
 4. 查
-
+===
+~~~~
 List<User> users = mUserDao.loadAll();
 String userName = "";
 for (int i = 0; i < users.size(); i++) {
