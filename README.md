@@ -5,7 +5,7 @@
 http://www.jianshu.com/p/4986100eff90
 ~~~
 关于GreenDao
-
+关于多表联系http://www.jianshu.com/p/dbec25bd575f
 greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解决方案。
 关于greenDAO的概念可以看官网greenDAO
 
