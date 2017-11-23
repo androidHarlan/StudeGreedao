@@ -12,7 +12,7 @@ http://www.jianshu.com/p/d61983df2341
 greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解决方案。<br>
 关于greenDAO的概念可以看官网greenDAO<br>
 
-greenDAO 优势<br>
+#greenDAO 优势<br>
 
 1、一个精简的库<br>
 2、性能最大化<br>
@@ -50,9 +50,9 @@ greendao {<br>
 }<br>
 在gradle的根模块中加入上述代码，就完成了我们的基本配置了。<br>
 属性介绍：<br>
- >>>schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;<br>
- >>>daoPackage --> dao的包名，包名默认是entity所在的包；<br>
- >>>targetGenDir --> 生成数据库文件的目录;<br>
+ schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;<br>
+ daoPackage --> dao的包名，包名默认是entity所在的包；<br>
+ targetGenDir --> 生成数据库文件的目录;<br>
 
 四，创建一个User的实体类<br>
 
