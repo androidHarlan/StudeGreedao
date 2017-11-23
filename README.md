@@ -14,7 +14,7 @@ greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解
 
 #greenDAO 优势<br>
 
-1、一个精简的库<br>
+###1、一个精简的库<br>
 2、性能最大化<br>
 3、内存开销最小化<br>
 4、易于使用的 APIs<br>
