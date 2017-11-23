@@ -27,10 +27,15 @@ GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成�
 
 一，在as中导入相关的包<br>
 =
+###
+~~~~
 compile'org.greenrobot:greendao:3.0.1'<br>
 compile'org.greenrobot:greendao-generator:3.0.0'<br>
+~~~~
 二，在build.gradle中进行配置：<br>
 =
+###
+~~~~
 apply plugin: 'org.greenrobot.greendao'<br>
 buildscript { <br>
     repositories { <br>
@@ -40,6 +45,7 @@ dependencies {<br>
     classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'    <br>
     }<br>
 }<br>
+~~~~
 在gradle的根模块中加入上述代码。<br>
 
 三，自定义路径<br>
@@ -57,6 +63,8 @@ greendao {<br>
 
 四，创建一个User的实体类<br>
 =
+####
+~~~~
 @Entity<br>
 public class User {<br>
     @Id <br>
@@ -65,6 +73,7 @@ public class User {<br>
     @Transient <br>
     private int tempUsageCount; // not persisted  <br>
 }
+~~~~
 五，MakeProject<br>
 =
  编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；<br>
