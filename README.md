@@ -49,14 +49,14 @@ dependencies {
 ~~~~
 在gradle的根模块中加入上述代码。<br>
 
-三，自定义路径<br>
+三，自定义路径,在gradle里的module<br>
 =
 ###
 ~~~~
 greendao {<br>
-    >>>schemaVersion 1<br>
-    >>>daoPackage 'com.anye.greendao.gen'<br>
-    >>>targetGenDir 'src/main/java'<br>
+    schemaVersion 1
+    daoPackage 'com.anye.greendao.gen'
+    targetGenDir 'src/main/java'
 }<br>
 ~~~~
 在gradle的根模块中加入上述代码，就完成了我们的基本配置了。<br>
