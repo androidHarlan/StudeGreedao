@@ -30,6 +30,8 @@ GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成�
 =
 ###
 ~~~~
+
+apply plugin: 'org.greenrobot.greendao'<br>
 compile'org.greenrobot:greendao:3.0.1'
 compile'org.greenrobot:greendao-generator:3.0.0'
 ~~~~
@@ -37,7 +39,7 @@ compile'org.greenrobot:greendao-generator:3.0.0'
 =
 ###
 ~~~~
-apply plugin: 'org.greenrobot.greendao'
+
 buildscript { 
     repositories {
         mavenCentral()  
