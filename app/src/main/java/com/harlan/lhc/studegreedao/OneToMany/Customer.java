@@ -22,6 +22,11 @@ public class Customer {
     private String name;
     @ToMany(referencedJoinProperty = "customerId")
     private List<Order> orders;
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
      * Entity must attached to an entity context.

@@ -66,13 +66,25 @@ public class CustomerHelp {
      *
      * @return
      */
-    public static List<Customer> queryAll() {
-
+    public static List<Customer> queryCustomerAll() {
         return DaoManager.getInstance().getDaoSession().getCustomerDao().queryBuilder().list();
     }
     public static List<Order> queryOrderAll() {
         return DaoManager.getInstance().getDaoSession().getOrderDao().queryBuilder().list();
     }
+    /**
+     * 查询条件为Type=TYPE_LOVE的数据
+     *
+     * @return
+     */
+    public static List<Customer> query(Long id) {
+        List<Customer> customers=DaoManager.getInstance().getDaoSession().getCustomerDao().queryBuilder().where(CustomerDao.Properties.Id.eq(id)).list();
+        for(int i=0;i<customers.size();i++){
+            customers.get(i).setOrders(OrderHelp.query(customers.get(i).getId()));
+        }
+        return customers;
+    }
+
     /**
      * 查询条件为Type=TYPE_LOVE的数据
      *  List<Student> list = msgBeanDao.queryBuilder()
@@ -84,7 +96,7 @@ public class CustomerHelp {
      .list();
      * @return
      */
-    public static List<Customer> queryAll(String name) {
+    public static List<Customer> queryCustomer(String name) {
         return DaoManager.getInstance().getDaoSession().getCustomerDao().queryBuilder().where(StudentDao.Properties.Name.eq(name)).list();
     }
 

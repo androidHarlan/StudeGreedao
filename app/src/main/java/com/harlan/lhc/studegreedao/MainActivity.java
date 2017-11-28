@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                         CustomerHelp.insert(customer);
 
                     }
-                    List<Customer> customers = CustomerHelp.queryAll();
+                    List<Customer> customers = CustomerHelp.queryCustomerAll();
 
                     for (int j = 0; j < customers.size(); j++) {
                         Log.e("backinfo", "顾客id:" + customers.get(j).getId());
