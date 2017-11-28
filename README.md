@@ -1,76 +1,94 @@
 # StudeGreedao
 初学greedao代码
-###学习步骤
+###
+学习步骤
 ~~~
 http://www.jianshu.com/p/4986100eff90
 ~~~
-关于GreenDao
+
 ~~~
 关于多表联系http://www.jianshu.com/p/dbec25bd575f
 http://www.jianshu.com/p/d61983df2341
 ~~~
-greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解决方案。
-关于greenDAO的概念可以看官网greenDAO
+greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解决方案。<br>
+关于greenDAO的概念可以看官网greenDAO<br>
 
-greenDAO 优势
+greenDAO 优势<br>
+=
+1、一个精简的库<br>
+#
+2、性能最大化<br>
+3、内存开销最小化<br>
+4、易于使用的 APIs<br>
+5、对 Android 进行高度优化<br>
 
-1、一个精简的库
-2、性能最大化
-3、内存开销最小化
-4、易于使用的 APIs
-5、对 Android 进行高度优化
+GreenDao 3.0使用<br>
 
-GreenDao 3.0使用
+GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成相应的代码。<br>
 
-GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成相应的代码。
+一，在as中导入相关的包<br>
+=
+###
+~~~~
 
-一，在as中导入相关的包
-
+apply plugin: 'org.greenrobot.greendao'<br>
 compile'org.greenrobot:greendao:3.0.1'
 compile'org.greenrobot:greendao-generator:3.0.0'
-二，在build.gradle中进行配置：
+~~~~
+二，在build.gradle中进行配置：<br>
+=
+###
+~~~~
 
-apply plugin: 'org.greenrobot.greendao'
 buildscript { 
-    repositories { 
-        mavenCentral()    
+    repositories {
+        mavenCentral()  
 }    
 dependencies {
-    classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'    
+    classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0' 
     }
 }
-在gradle的根模块中加入上述代码。
+~~~~
+在gradle的根模块中加入上述代码。<br>
 
-三，自定义路径
-
+三，自定义路径,在gradle里的module<br>
+=
+###
+~~~~
 greendao {
-    schemaVersion 1
+    schemaVersion 1
     daoPackage 'com.anye.greendao.gen'
     targetGenDir 'src/main/java'
 }
-在gradle的根模块中加入上述代码，就完成了我们的基本配置了。
-属性介绍：
-schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;
-daoPackage --> dao的包名，包名默认是entity所在的包；
-targetGenDir --> 生成数据库文件的目录;
+~~~~
+在gradle的根模块中加入上述代码，就完成了我们的基本配置了。<br>
+属性介绍：<br>
+ schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;<br>
+ daoPackage --> dao的包名，包名默认是entity所在的包；<br>
+ targetGenDir --> 生成数据库文件的目录;<br>
 
-四，创建一个User的实体类
-
-@Entity
-public class User {
-    @Id 
-    private Long id; 
-    private String name; 
-    @Transient 
-    private int tempUsageCount; // not persisted  
+四，创建一个User的实体类<br>
+=
+####
+~~~~
+@Entity<br>
+public class User {<br>
+    @Id <br>
+    private Long id; <br>
+    private String name; <br>
+    @Transient <br>
+    private int tempUsageCount; // not persisted  <br>
 }
-五，MakeProject
+~~~~
+五，在studio 里的Build   Make  Project<br>
+=
+ 编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；<br>
+![](http://upload-images.jianshu.io/upload_images/1429046-0a2aac0bed796a94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
 
-编译项目，User实体类会自动编译，生成get、set方法并且会在com.anye.greendao.gen目录下生成三个文件；
-
-
-greenDao
-GreenDao使用
+greenDao<br>
+GreenDao使用<br>
+=
+~~~~
 
  public class MyApplication extends Application {
  private DaoMaster.DevOpenHelper mHelper;
@@ -112,20 +130,27 @@ public SQLiteDatabase getDb() {
 
   mUserDao = MyApplication.getInstances().getDaoSession().getUserDao();
 简单的增删改查实现：
-
+~~~~
 1. 增
-
+===
+~~~~
 mUser = new User((long)2,"anye3");
 mUserDao.insert(mUser);//添加一个
+~~~~
 2. 删
-
+===
+~~~~
 mUserDao.deleteByKey(id);
+~~~~
 3. 改
-
+===
+~~~~
 mUser = new User((long)2,"anye0803");
 mUserDao.update(mUser);
+~~~~
 4. 查
-
+===
+~~~~
 List<User> users = mUserDao.loadAll();
 String userName = "";
 for (int i = 0; i < users.size(); i++) {
@@ -133,24 +158,24 @@ for (int i = 0; i < users.size(); i++) {
 }
 mContext.setText("查询全部数据==>"+userName);
 更多的操作就不一一介绍了，大家可以根据需要去查找资料；
-
-greendao中的注解
-
-(一) @Entity 定义实体
-@nameInDb 在数据库中的名字，如不写则为实体中类名
-@indexes 索引
-@createInDb 是否创建表，默认为true,false时不创建
-@schema 指定架构名称为实体
-@active 无论是更新生成都刷新
-(二) @Id
-(三) @NotNull 不为null
-(四) @Unique 唯一约束
-(五) @ToMany 一对多
-(六) @OrderBy 排序
-(七) @ToOne 一对一
-(八) @Transient 不存储在数据库中
-(九) @generated 由greendao产生的构造函数或方法
-
+~~~~
+greendao中的注解<br>
+=
+(一) @Entity 定义实体<br>
+@nameInDb 在数据库中的名字，如不写则为实体中类名<br>
+@indexes 索引<br>
+@createInDb 是否创建表，默认为true,false时不创建<br>
+@schema 指定架构名称为实体<br>
+@active 无论是更新生成都刷新<br>
+(二) @Id<br>
+(三) @NotNull 不为null<br>
+(四) @Unique 唯一约束<br>
+(五) @ToMany 一对多<br><br>
+(六) @OrderBy 排序<br>
+(七) @ToOne 一对一<br>
+(八) @Transient 不存储在数据库中<br><br>
+(九) @generated 由greendao产生的构造函数或方法<br>
+~~~~
 结束语
 
 总体来说,GreenDao3.0在配置上相对于2.0要简单的多。
@@ -163,3 +188,4 @@ greendao中的注解
 链接：http://www.jianshu.com/p/4986100eff90
 來源：简书
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+~~~~
